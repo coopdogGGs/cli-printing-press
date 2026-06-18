@@ -1,0 +1,17 @@
+name: oura
+display_name: Oura
+description: Personal health data from the Oura Ring - sleep, readiness, daily activity, heart rate, workouts, SpO2, stress, and resilience.
+category: health
+spec_url: https://cloud.ouraring.com/v2/static/json/openapi-1.34.json
+spec_format: json
+openapi_version: "3.1"
+base_url: https://api.ouraring.com
+tier: official
+verified_date: "2026-06-17"
+homepage: https://cloud.ouraring.com/v2/docs
+spec_source: official
+auth_preference: OAuth2
+auth_key_url: https://cloud.ouraring.com/oauth/applications
+auth_instructions: "Register an OAuth2 application, then run `auth login` for the authorization_code browser flow (scopes: daily, heartrate, personal, workout, session, tag, spo2Daily). Static personal access tokens were deprecated December 2025."
+sandbox_endpoint: /v2/sandbox/usercollection/daily_sleep
+notes: "72 read-only GET routes (daily_sleep/activity/readiness, heartrate, workout, daily_spo2/stress/resilience, vo2_max, sessions). Spec advertises BearerAuth + OAuth2; auth_preference pins OAuth2 because static bearer tokens are deprecated, so the parser default (BearerAuth) would generate a dead auth path. Upstream servers[0].url is the malformed `https://api.None.com` (a Python None leaked into Oura's generated spec), so base_url is overridden to the documented host. OAuth authorize/token URLs are taken from the OAuth2 security scheme and are correct. Webhook subscription routes use a separate x-client-id + x-client-secret header pair. Sandbox routes under /v2/sandbox/usercollection serve fake data for testing but still require a token."

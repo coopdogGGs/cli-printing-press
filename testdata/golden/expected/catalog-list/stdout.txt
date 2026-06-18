@@ -19,6 +19,9 @@ developer-tools:
 example:
   petstore             Canonical OpenAPI example - pet store management
 
+health:
+  oura                 Personal health data from the Oura Ring - sleep, readiness, daily activity, heart rate, workouts, SpO2, stress, and resilience.
+
 maps:
   openrouteservice     Open-source routing, geocoding, matrix, isochrones, and VRP optimization on OpenStreetMap data.
 
